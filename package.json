@@ -1,0 +1,28 @@
+{
+  "name": "md-press",
+  "version": "1.0.0",
+  "description": "md-press",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linhuibin98/md-press.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linhuibin98/md-press/issues"
+  },
+  "homepage": "https://github.com/linhuibin98/md-press#readme",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.12",
+    "@vue/compiler-ssr": "^3.2.12",
+    "@vue/server-renderer": "^3.2.12",
+    "koa": "^2.13.1",
+    "marked": "^3.0.4",
+    "vue": "^3.2.12"
+  }
+}
