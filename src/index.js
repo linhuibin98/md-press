@@ -7,15 +7,22 @@ const path = require('path');
 const marked = require('marked');
 
 const { readFile } = require('./utils');
+const markdown = require('./markdown');
+const watch = require('./watch');
+const redis = require('./redis');
+
+watch.start();
+redis.start();
 
 const server = new Koa();
 
 const PORT = '3001';
 const templatePath = path.join(__dirname, 'template/App.vue');
 const blogPath = path.join(__dirname, '../blog/README.md');
-const themePath = path.join(__dirname, './theme/han.css');
+const themePath = path.join(__dirname, './theme/lixiaolai.css');
 
 server.use(async (ctx, next) => {
+    markdown.bootstrap();
     // 编译Vue组件
     const source = await readFile(templatePath);
     const { descriptor } = compileSfc.parse(source);
@@ -44,7 +51,6 @@ server.use(async (ctx, next) => {
 
     ctx.body = `
         <style>${css}</style>
-        <h1>Hello Vue Server Render</h1>
         <div id="app">
             ${ctx.body}
         </div>

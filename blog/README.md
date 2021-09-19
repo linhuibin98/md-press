@@ -37,4 +37,4 @@
 
 ## 插件开发说明
 
-查看[插件开发说明](https://github.com/su37josephxia/smarty-press/tree/master/src/markdown/provider/__test_files__/)
+查看文档说明123132
