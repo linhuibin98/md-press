@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "md-press",
   "main": "index.js",
+  "module": "ES6",
   "scripts": {
     "dev": "nodemon ./src/index.js"
   },
@@ -21,8 +22,11 @@
     "@vue/compiler-sfc": "^3.2.12",
     "@vue/compiler-ssr": "^3.2.12",
     "@vue/server-renderer": "^3.2.12",
+    "glob": "^7.1.7",
+    "ioredis": "^4.27.9",
     "koa": "^2.13.1",
     "marked": "^3.0.4",
-    "vue": "^3.2.12"
+    "vue": "^3.2.12",
+    "watch": "^1.0.2"
   }
 }
