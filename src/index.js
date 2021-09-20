@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const cors = require('koa2-cors');
 const Vue = require('vue');
 const serverRender = require('@vue/server-renderer');
 const compileSsr = require('@vue/compiler-ssr');
@@ -24,6 +25,9 @@ const themePath = path.join(__dirname, './theme/lixiaolai.css');
 
     const server = new Koa();
     server.use(catchErrorMiddleware());
+    server.use(cors({
+        origin: ctx => /^(localhost)|(127.0.0.1)|(0.0.0.0)\:?\d*/i.test(ctx.host)
+    }));
     await registerRouter(server);
 
     server.use(async (ctx, next) => {

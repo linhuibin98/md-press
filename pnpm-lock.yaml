@@ -8,6 +8,7 @@ specifiers:
   ioredis: ^4.27.9
   koa: ^2.13.1
   koa-router: ^10.1.1
+  koa2-cors: ^2.0.6
   marked: ^3.0.4
   mongoose: ^6.0.5
   vue: ^3.2.12
@@ -21,6 +22,7 @@ dependencies:
   ioredis: 4.27.9
   koa: 2.13.1
   koa-router: 10.1.1
+  koa2-cors: 2.0.6
   marked: 3.0.4
   mongoose: 6.0.5
   vue: 3.2.12
@@ -525,6 +527,11 @@ packages:
       statuses: 1.5.0
       type-is: 1.6.18
       vary: 1.1.2
+    dev: false
+
+  /koa2-cors/2.0.6:
+    resolution: {integrity: sha1-mtI986C5u4RTC0b1lE8/tXYIZVQ=, tarball: https://r.cnpmjs.org/koa2-cors/download/koa2-cors-2.0.6.tgz}
+    engines: {node: '>= 7.6.0'}
     dev: false
 
   /loader-utils/1.4.0:
