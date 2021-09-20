@@ -1,4 +1,4 @@
-# 欢迎使用 SMARTY-PRESS
+# 欢迎使用 md-PRESS
 
 
 ## 简单说明

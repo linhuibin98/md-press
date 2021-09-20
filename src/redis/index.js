@@ -7,7 +7,7 @@ let redis;
 module.exports = {
   start() {
     redis = new Redis(config.port, config.host);
-    console.log("redis connected");
+    console.log("redis log: redis connected");
     return redis;
   },
   hasStart() {

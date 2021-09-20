@@ -7,6 +7,7 @@ specifiers:
   glob: ^7.1.7
   ioredis: ^4.27.9
   koa: ^2.13.1
+  koa-router: ^10.1.1
   marked: ^3.0.4
   mongoose: ^6.0.5
   vue: ^3.2.12
@@ -19,6 +20,7 @@ dependencies:
   glob: 7.1.7
   ioredis: 4.27.9
   koa: 2.13.1
+  koa-router: 10.1.1
   marked: 3.0.4
   mongoose: 6.0.5
   vue: 3.2.12
@@ -485,6 +487,17 @@ packages:
       koa-compose: 3.2.1
     dev: false
 
+  /koa-router/10.1.1:
+    resolution: {integrity: sha1-IICfgmSFGLhHJs1EUDeBPNmfF/8=, tarball: https://r.cnpmjs.org/koa-router/download/koa-router-10.1.1.tgz}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      debug: 4.3.2
+      http-errors: 1.8.0
+      koa-compose: 4.1.0
+      methods: 1.1.2
+      path-to-regexp: 6.2.0
+    dev: false
+
   /koa/2.13.1:
     resolution: {integrity: sha1-YnUXKHWye8/h1FQ1altrn1qbEFE=, tarball: https://r.cnpmjs.org/koa/download/koa-2.13.1.tgz}
     engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
@@ -575,6 +588,11 @@ packages:
 
   /merge/1.2.1:
     resolution: {integrity: sha1-OL6/gMMiCopIe2/Ps5QbsRcgwUU=, tarball: https://r.cnpmjs.org/merge/download/merge-1.2.1.tgz}
+    dev: false
+
+  /methods/1.1.2:
+    resolution: {integrity: sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=, tarball: https://r.cnpmjs.org/methods/download/methods-1.1.2.tgz}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /mime-db/1.49.0:
@@ -695,6 +713,10 @@ packages:
   /path-is-absolute/1.0.1:
     resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=, tarball: https://r.cnpmjs.org/path-is-absolute/download/path-is-absolute-1.0.1.tgz}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /path-to-regexp/6.2.0:
+    resolution: {integrity: sha1-97OAMzYQTDRoia3s5hRmkjBkXzg=, tarball: https://r.cnpmjs.org/path-to-regexp/download/path-to-regexp-6.2.0.tgz}
     dev: false
 
   /postcss-modules-extract-imports/3.0.0_postcss@8.3.6:
