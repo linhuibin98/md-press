@@ -1,7 +1,9 @@
 const watch = require("watch");
 const nodePath = require("path");
 
-const redis = require("../redis");
+const add = require('./add');
+const change = require('./change');
+const remove = require('./remove');
 
 let watchPath = nodePath.join(__dirname, "../../blog");
 
@@ -14,22 +16,29 @@ module.exports = {
         watchPath = path;
       } else if (prev === null) {
         // f is a new file
+        if(!/.md$/i.test(f)) {
+          return;
+        }
         f = f.replace(/\\/g, '/');
         console.log(`watch log: add ${f}`);
+        await add(f, curr);
       } else if (curr.nlink === 0) {
         // f was removed
+        if(!/.md$/i.test(f)) {
+          return;
+        }
         f = f.replace(/\\/g, '/');
         console.log(`watch log: remove ${f}`);
+        await remove(f, prev);
       } else {
         // f was changed
-        f = f.replace(/\\/g, '/');
-        console.log(`watch log: change ${f}`);
-        let file = await redis.get(f.replace('\\', '/'));
-        if (file) {
-          file = JSON.parse(file);
-          file.stats = curr;
-          await redis.set(f, JSON.stringify(file));
+        if(!/.md$/i.test(f)) {
+          return;
         }
+        f = f.replace(/\\/g, '/');
+        await change(f, curr);
+        console.log(`watch log: change ${f}`);
+        
       }
     });
   },

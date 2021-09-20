@@ -22,4 +22,7 @@ module.exports = {
   set(...args) {
     return this.hasStart() && redis.set(...args);
   },
+  del(...args) {
+    return this.hasStart() && redis.del(...args);
+  }
 };
