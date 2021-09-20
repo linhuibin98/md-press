@@ -10,8 +10,10 @@ const { readFile } = require('./utils');
 const markdown = require('./markdown');
 const watch = require('./watch');
 const redis = require('./redis');
+const mongodb = require('./model');
 
 watch.start();
+mongodb.start();
 redis.start();
 
 const server = new Koa();

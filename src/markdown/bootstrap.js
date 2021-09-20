@@ -14,7 +14,7 @@ async function bootstrap({
     // 格式化 file 对象
     await files.reduce((cfile, nfile, index) => cfile.then(() => normalizeFile({file: nfile, raw: rawSources[index]})), Promise.resolve());
     // 存储 file
-    await await files.reduce((cfile, nfile, index) => cfile.then(() => saveFile(nfile)), Promise.resolve());
+    await files.reduce((cfile, nfile) => cfile.then(() => saveFile(nfile)), Promise.resolve());
     // console.log(files)
 }
 

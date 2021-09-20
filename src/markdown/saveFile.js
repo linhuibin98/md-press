@@ -1,11 +1,11 @@
-const redis = require('../redis');
+const blogModel = require('../model/blog/model');
 
 module.exports = async function saveFile(file) {
     if (!file) {
         return;
     }
-    if (!!await redis.get(file.filePath)) {
+    if (!!await blogModel.findByIno(file.ino)) {
         return;
     }
-    return await redis.set(file.filePath, JSON.stringify(file));
+    return await blogModel.create(file);
 }
