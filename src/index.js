@@ -2,7 +2,6 @@ const Koa = require('koa');
 const cors = require('koa2-cors');
 const Vue = require('vue');
 const serverRender = require('@vue/server-renderer');
-const compileSsr = require('@vue/compiler-ssr');
 const compileSfc = require('@vue/compiler-sfc');
 const path = require('path');
 const marked = require('marked');
@@ -34,17 +33,21 @@ const themePath = path.join(__dirname, './theme/lixiaolai.css');
         // 编译Vue组件
         const source = await readFile(templatePath);
         const { descriptor } = compileSfc.parse(source);
-        console.log(descriptor.template.content);
+        // console.log(descriptor);
         const data = () => ({
             msg: 'Hello Vue'
         });
-        const renderCode = compileSsr.compile(descriptor.template.content).code;
-        const vueApp = Vue.createApp({
+        const vueApp = Vue.createSSRApp({
             data,
-            ssrRender: new Function('require', renderCode)(require)
+            template: `${descriptor.template.content}`,
+            methods: {
+                click() {
+                    console.log(111)
+                }
+            },
         });
         const html = await serverRender.renderToString(vueApp);
-        
+        ctx.$content = descriptor.template.content;
         ctx.body = html;
         await next();
     });
@@ -59,10 +62,27 @@ const themePath = path.join(__dirname, './theme/lixiaolai.css');
     
         ctx.body = `
             <style>${css}</style>
-            <div id="app">
+            <div id="__app">
                 ${ctx.body}
             </div>
             <div class="markdown">${mdHtml}</div> 
+            <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.js"></script>
+            <script>
+                var vueApp = Vue.createApp({
+                    data() {
+                        return {
+                            msg: 'Hello Vue'
+                        }
+                    },
+                    template: '${ctx.$content.trim()}',
+                    methods: {
+                        click() {
+                            console.log(111)
+                        }
+                    }
+                });
+                vueApp.mount('#__app');
+            </script>
         `;
         await next();
     });
